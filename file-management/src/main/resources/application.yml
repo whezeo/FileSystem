@@ -1,0 +1,38 @@
+server:
+  port: 8080
+spring:
+  #datasource
+  datasource:
+    url: jdbc:mysql://localhost:3306/file?useUnicode=true&characterEncoding=UTF-8&serverTimeZone=UTC
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  redis:
+    port: 6379
+    host: 192.168.142.172
+    database: 1
+  #email
+  mail:
+    host: smtp.qq.com
+    port: 587
+    username: 1986535918@qq.com
+    password: pnzbntnrvdhsdfdg  #第一步中获取的授权码
+    properties:
+      from: 1986535918@qq.com
+#cache
+  cache:
+    redis:
+      time-to-live: 60m
+#mybatis-plus
+mybatis-plus:
+  global-config:
+    db-config:
+      table-prefix: file_
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+
+fileLocation: D:/echo
+
+debug: true

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zxl.fileManage.mapper.FileMapper">
+<!--    SELECT * FROM file_file WHERE CONCAT(`path`,`name`) LIKE "/1%" ORDER BY PATH-->
+    <select id="selectLikePath" parameterType="String" resultType="com.zxl.fileManage.pojo.File">
+        SELECT * FROM file_file WHERE concat(CONCAT(`path`,`name`),'/') like concat( #{originPath},'%') ORDER BY PATH
+    </select>
+    <delete id="deleteByPath" parameterType="String">
+        delete from file_file where concat(CONCAT(`path`,`name`),'/') like concat(#{targetPath},'%')
+    </delete>
+</mapper>
